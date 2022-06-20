@@ -1,8 +1,11 @@
+import { Container } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
 	return (
-		<div className='App'>
+		<Container fluid>
 			<h1>Hello from app</h1>
-		</div>
+		</Container>
 	);
 }
 
