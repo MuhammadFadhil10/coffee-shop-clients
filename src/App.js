@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 	return (
 		<Container fluid>
-			<h1>Hello from app</h1>
+			<h1>Hello from fadhil</h1>
 		</Container>
 	);
 }
