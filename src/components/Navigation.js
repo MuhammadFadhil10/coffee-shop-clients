@@ -18,12 +18,12 @@ const Navigation = () => {
 					<Image src=''></Image>
 					<Navbar.Text>Kopiku</Navbar.Text>
 				</Navbar.Brand>
-				<Form>
+				{/* <Form>
 					<Form.Group className={`d-flex`}>
 						<Form.Control type='text'></Form.Control>
 						<Button>Search</Button>
 					</Form.Group>
-				</Form>
+				</Form> */}
 				<div
 					className={`d-flex flex-column justify-content-between 
                     ${Classes.mobileMenu}`}
@@ -52,6 +52,16 @@ const Navigation = () => {
 					</li>
 					<li>
 						<Link to='/'>Home</Link>
+					</li>
+					<li>
+						<Form>
+							<Form.Group
+								className={!showMobileMenu ? `d-none` : `d-flex flex-column`}
+							>
+								<Form.Control type='text'></Form.Control>
+								<Button>Search</Button>
+							</Form.Group>
+						</Form>
 					</li>
 				</ul>
 			</div>
