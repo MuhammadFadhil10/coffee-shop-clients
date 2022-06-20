@@ -1,0 +1,10 @@
+.registerForm input,
+.loginForm input {
+	width: 300px;
+}
+.registerForm button,
+.loginForm button {
+	width: 120px;
+	height: 50px;
+	margin-top: 1rem;
+}

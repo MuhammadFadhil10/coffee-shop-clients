@@ -12,12 +12,18 @@ const Navigation = () => {
 	return (
 		<>
 			<Navbar
-				className={`d-flex justify-content-center ${Classes.navbarContainer}`}
+				className={`d-flex justify-content-around ${Classes.navbarContainer}`}
 			>
-				<Navbar.Brand>
+				<Navbar.Brand href='/'>
 					<Image src=''></Image>
 					<Navbar.Text>Kopiku</Navbar.Text>
 				</Navbar.Brand>
+				<div
+					className={`d-flex justify-content-evenly ${Classes.registerContainer}`}
+				>
+					<Link to='/register'>Register</Link>
+					<Link to='/login'>Login</Link>
+				</div>
 				{/* <Form>
 					<Form.Group className={`d-flex`}>
 						<Form.Control type='text'></Form.Control>
