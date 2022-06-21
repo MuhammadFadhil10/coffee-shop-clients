@@ -145,7 +145,7 @@ const Login = () => {
 					</Form.Group>
 				</Form>
 				<Link to='/register'>Have no acount? Register here</Link>
-				<Link to='/reset-password'>Forgot password</Link>
+				<Link to='/account/reset-password'>Forgot password</Link>
 			</Container>
 		</>
 	);

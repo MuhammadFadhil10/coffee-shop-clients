@@ -9,6 +9,7 @@ import ActivationAccount from './pages/auth/ActivationAccount';
 
 import Navigation from './components/Navigation';
 import ResetPassword from './pages/auth/ResetPassword';
+import UpdatePassword from './pages/auth/UpdatePassword';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,7 +23,11 @@ root.render(
 				path='/account/activation/:activationToken'
 				element={<ActivationAccount />}
 			></Route>
-			<Route path='/reset-password' element={<ResetPassword />}></Route>
+			<Route path='/account/reset-password' element={<ResetPassword />}></Route>
+			<Route
+				path='/account/update-password/:userId'
+				element={<UpdatePassword />}
+			></Route>
 		</Routes>
 	</BrowserRouter>
 );
