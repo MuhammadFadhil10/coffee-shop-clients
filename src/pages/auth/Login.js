@@ -55,7 +55,6 @@ const Login = () => {
 	useEffect(() => {
 		if (mount.current) {
 			getNewToken.then((result) => setNewTokenResult(result));
-			console.log(newTokenResult);
 		} else {
 			mount.current = true;
 		}
@@ -142,6 +141,7 @@ const Login = () => {
 					</Form.Group>
 				</Form>
 				<Link to='/register'>Have no acount? Register here</Link>
+				<Link to='#'>Forgot password</Link>
 			</Container>
 		</>
 	);
