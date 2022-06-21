@@ -10,6 +10,7 @@ import ActivationAccount from './pages/auth/ActivationAccount';
 import Navigation from './components/Navigation';
 import ResetPassword from './pages/auth/ResetPassword';
 import UpdatePassword from './pages/auth/UpdatePassword';
+import PageNotFound from './pages/404';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,6 +29,7 @@ root.render(
 				path='/account/update-password/:userId'
 				element={<UpdatePassword />}
 			></Route>
+			<Route path='*' element={<PageNotFound />}></Route>
 		</Routes>
 	</BrowserRouter>
 );
