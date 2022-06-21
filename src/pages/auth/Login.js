@@ -119,12 +119,16 @@ const Login = () => {
 						<Button onClick={() => sendLogin()}>Login</Button>
 						<Button
 							variant='outline-primary'
-							onClick={() => setShowNewTokenEmail(true)}
+							onClick={() =>
+								!showNewTokenEmail
+									? setShowNewTokenEmail(true)
+									: setShowNewTokenEmail(false)
+							}
 						>
-							get new activation Link
+							{!showNewTokenEmail ? 'get new activation Link' : 'cancel'}
 						</Button>
 					</div>
-					<Form.Group className={showNewTokenEmail ? 'd-flex' : 'd-none'}>
+					<Form.Group className={showNewTokenEmail ? '' : 'd-none'}>
 						<Form.Label>email</Form.Label>
 						<Form.Control
 							autoComplete='off'
@@ -141,7 +145,7 @@ const Login = () => {
 					</Form.Group>
 				</Form>
 				<Link to='/register'>Have no acount? Register here</Link>
-				<Link to='#'>Forgot password</Link>
+				<Link to='/reset-password'>Forgot password</Link>
 			</Container>
 		</>
 	);
