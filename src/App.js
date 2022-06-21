@@ -7,7 +7,6 @@ import NotFound from './pages/NotFound';
 
 function App() {
 	const data = useGet('/products');
-	console.log(data);
 	return (
 		<Container fluid>
 			<h1>Hello from fadhil</h1>

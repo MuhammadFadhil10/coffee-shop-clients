@@ -5,7 +5,6 @@ const useGet = (endpoint) => {
 	const [data, setData] = useState(null);
 	const getData = async () => {
 		const response = await axios.get(`http://localhost:5000${endpoint}`);
-		console.log(response);
 		return response;
 	};
 	useEffect(() => {
