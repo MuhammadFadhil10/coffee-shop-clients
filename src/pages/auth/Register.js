@@ -17,6 +17,7 @@ const Register = () => {
 
 	const [registerTrigger, setRegisterTrigger] = useState(false);
 	const [registerResult, setRegisterResult] = useState(null);
+
 	const registerProcess = usePost(
 		'/register',
 		{
@@ -27,10 +28,11 @@ const Register = () => {
 		},
 		registerTrigger
 	);
+
 	const sendRegister = () => {
 		!registerTrigger ? setRegisterTrigger(true) : setRegisterTrigger(false);
 	};
-
+	// get register result from fullfilled register promise
 	useEffect(() => {
 		if (mount.current) {
 			registerProcess.then((result) => {
@@ -59,8 +61,9 @@ const Register = () => {
 									: 'success'
 							}
 							message={
-								registerResult.data &&
-								registerResult.data.message.map((msg) => msg)
+								registerResult.data && registerResult.data.status === 'error'
+									? registerResult.data.message.map((msg) => msg)
+									: registerResult.data.message
 							}
 						/>
 					)}
