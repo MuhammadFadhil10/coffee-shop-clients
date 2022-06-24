@@ -12,6 +12,7 @@ import ResetPassword from './pages/auth/ResetPassword';
 import UpdatePassword from './pages/auth/UpdatePassword';
 import Dashboard from './pages/admin/Dashboard';
 import PageNotFound from './pages/404';
+import AddProduct from './pages/admin/AddProduct';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -31,6 +32,7 @@ root.render(
 				element={<UpdatePassword />}
 			></Route>
 			<Route path='/admin/dashboard' element={<Dashboard />}></Route>
+			<Route path='/admin/add-product' element={<AddProduct />}></Route>
 			<Route path='*' element={<PageNotFound />}></Route>
 		</Routes>
 	</BrowserRouter>

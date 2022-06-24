@@ -1,9 +1,9 @@
-import { Container } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-const Dashboard = () => {
+const AddProduct = () => {
 	const navigate = useNavigate();
 	const token = localStorage.getItem('access-token');
 	const isAdmin = localStorage.getItem('is-admin');
@@ -15,15 +15,10 @@ const Dashboard = () => {
 	return (
 		<>
 			<Container fluid>
-				<h1>Hello from dashboard</h1>
-				<ul>
-					<li>
-						<Link to='/admin/add-product'>Add Product</Link>
-					</li>
-				</ul>
+				<h1>Hello from AddProduct</h1>
 			</Container>
 		</>
 	);
 };
 
-export default Dashboard;
+export default AddProduct;

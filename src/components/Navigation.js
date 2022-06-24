@@ -73,12 +73,12 @@ const Navigation = () => {
 					<li>
 						<Link to='/'>Home</Link>
 					</li>
-					{isAdmin && (
+					{isAdmin === 'true' && (
 						<li>
-							<Link to='/'>Dashboard</Link>
+							<Link to='/admin/dashboard'>Dashboard</Link>
 						</li>
 					)}
-					{!isAdmin && (
+					{isAdmin === 'false' && (
 						<>
 							<li>
 								<Link to='/'>Chart</Link>

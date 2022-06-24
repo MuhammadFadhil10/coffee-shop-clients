@@ -15,7 +15,7 @@ function App() {
 				data.data.result &&
 				data.data.result.map((el) => {
 					return (
-						<div>
+						<div key={el.id}>
 							<Image src={el.image}></Image>
 							<h1>{el.name}</h1>
 							<h1>{el.price}</h1>
