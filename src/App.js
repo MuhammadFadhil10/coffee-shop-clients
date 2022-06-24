@@ -1,4 +1,4 @@
-import { Container } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Classes from './App.module.css';
@@ -6,7 +6,8 @@ import useGet from './hooks/useGet';
 import NotFound from './pages/NotFound';
 
 function App() {
-	const data = useGet('/products');
+	const token = localStorage.getItem('access-token');
+	const data = useGet('/products', token);
 	return (
 		<Container fluid>
 			<h1>Hello from fadhil</h1>
@@ -15,6 +16,7 @@ function App() {
 				data.data.result.map((el) => {
 					return (
 						<div>
+							<Image src={el.image}></Image>
 							<h1>{el.name}</h1>
 							<h1>{el.price}</h1>
 						</div>

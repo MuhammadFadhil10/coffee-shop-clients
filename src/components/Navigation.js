@@ -2,13 +2,21 @@ import { Navbar, Image, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Classes from './Navigation.module.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Navigation = () => {
+	const token = localStorage.getItem('access-token');
+	const isAdmin = localStorage.getItem('is-admin');
 	const [showMobileMenu, setShowMobileMenu] = useState(false);
 	const mobileMenuHandler = () => {
 		!showMobileMenu ? setShowMobileMenu(true) : setShowMobileMenu(false);
 	};
+
+	const logoutHandler = () => {
+		localStorage.clear();
+		setShowMobileMenu(false);
+	};
+
 	return (
 		<>
 			<Navbar
@@ -18,12 +26,14 @@ const Navigation = () => {
 					<Image src=''></Image>
 					<Navbar.Text>Kopiku</Navbar.Text>
 				</Navbar.Brand>
-				<div
-					className={`d-flex justify-content-evenly ${Classes.registerContainer}`}
-				>
-					<Link to='/register'>Register</Link>
-					<Link to='/login'>Login</Link>
-				</div>
+				{!token && (
+					<div
+						className={`d-flex justify-content-evenly ${Classes.registerContainer}`}
+					>
+						<Link to='/register'>Register</Link>
+						<Link to='/login'>Login</Link>
+					</div>
+				)}
 				{/* <Form>
 					<Form.Group className={`d-flex`}>
 						<Form.Control type='text'></Form.Control>
@@ -51,15 +61,6 @@ const Navigation = () => {
 			>
 				<ul>
 					<li>
-						<Link to='/'>Home</Link>
-					</li>
-					<li>
-						<Link to='/'>Home</Link>
-					</li>
-					<li>
-						<Link to='/'>Home</Link>
-					</li>
-					<li>
 						<Form>
 							<Form.Group
 								className={!showMobileMenu ? `d-none` : `d-flex flex-column`}
@@ -69,6 +70,29 @@ const Navigation = () => {
 							</Form.Group>
 						</Form>
 					</li>
+					<li>
+						<Link to='/'>Home</Link>
+					</li>
+					{isAdmin && (
+						<li>
+							<Link to='/'>Dashboard</Link>
+						</li>
+					)}
+					{!isAdmin && (
+						<>
+							<li>
+								<Link to='/'>Chart</Link>
+							</li>
+							<li>
+								<Link to='/'>Order</Link>
+							</li>
+						</>
+					)}
+					{token && (
+						<li onClick={() => logoutHandler()}>
+							<Link to='/'>logout</Link>
+						</li>
+					)}
 				</ul>
 			</div>
 		</>

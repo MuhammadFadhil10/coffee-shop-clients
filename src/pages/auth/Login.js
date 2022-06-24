@@ -35,6 +35,11 @@ const Login = () => {
 	useEffect(() => {
 		if (mount.current) {
 			loginProcess.then((result) => {
+				if (result.data.status === 'success') {
+					localStorage.setItem('access-token', result.data.accessToken);
+					localStorage.setItem('refresh-token', result.data.refreshToken);
+					localStorage.setItem('is-admin', result.data.isAdmin);
+				}
 				setLoginResult(result);
 			});
 		} else {
@@ -47,6 +52,7 @@ const Login = () => {
 		!newTokenTrigger ? setNewTokenTrigger(true) : setNewTokenTrigger(false);
 	};
 
+	// reset token
 	const getNewToken = usePost(
 		`/activation/new-token/${newTokenEmail}`,
 		{},
@@ -73,7 +79,8 @@ const Login = () => {
 					{loginResult && (
 						<AlertMessage
 							type={
-								loginResult.data && loginResult.data.status === 'error'
+								(loginResult.data && loginResult.data.status === 'error') ||
+								loginResult.data.status === 'login error'
 									? 'danger'
 									: 'success'
 							}
@@ -84,10 +91,12 @@ const Login = () => {
 							}
 						/>
 					)}
-					{newTokenResult && (
+					{newTokenResult && newTokenResult.data && (
 						<AlertMessage
 							type={
-								newTokenResult.data && newTokenResult.data.status === 'error'
+								newTokenResult &&
+								newTokenResult.data &&
+								newTokenResult.data.status === 'error'
 									? 'danger'
 									: 'success'
 							}
